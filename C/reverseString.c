@@ -2,6 +2,7 @@
 #include <string.h>
 
 void main(int argc, char** argv) {
+	
 	int len;
 	char temp;
 	char *str = argv[1];
@@ -17,5 +18,6 @@ void main(int argc, char** argv) {
 		--end_ptr;
 		++str;
 	}
+
 	printf("%s\n", argv[1]);
 }
