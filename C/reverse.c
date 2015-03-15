@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-void string_reverse1(char* string) {	
+void string_reverse1(char* string) 
+{	
 	char* front = string;
 	char* back = string;
 	while (*back) {
@@ -17,7 +18,8 @@ void string_reverse1(char* string) {
 	printf("%s\n", string);
 }
 
-char* string_reverse2(const char* string) {
+char* string_reverse2(const char* string)
+{
 	int len = strlen(string);	// assuming can use string.h
 	char string2[len];
 	strcpy(string2, string);
@@ -26,7 +28,8 @@ char* string_reverse2(const char* string) {
 }
 
 
-int main() {
+int main() 
+{
 	char bro[] = "broski";
 	const char hi[] = "hello world";
 	printf("%s\n", bro);
