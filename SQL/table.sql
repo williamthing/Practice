@@ -148,6 +148,13 @@ FROM Airline al, Flight ft
 WHERE al.code = ft.airline_code AND ft.from_city = 'SEA' AND ft.to_city = 'HNL' AND 
 ft.depart_time >= 1000 AND ft.month = 3 AND ft.day = 18 AND ft.year = 2014;
 
-
+-- Finds name of airlines that have 10 or more senior pilots
+-- Senior pilots are pilots who have flown have more than 2000 hours of flight time
+SELECT a.name
+FROM Airline a, Pilot p
+WHERE a.code = p.airline_code
+AND p.flight_hours >= 2000
+GROUP BY a.name
+HAVING COUNT(*) >= 10;
 
 
