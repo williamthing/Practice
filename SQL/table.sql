@@ -129,6 +129,18 @@ SELECT t.dept, t.number
 FROM Teaches t
 WHERE t.username NOT IN ('zahorjan', 'levy');
 
+-- abstract table
+/*
+Airline(code,name)
+Pilot(id,name,flight_hours,airline_code)
+Flight(airline_code, number,from_city,to_city,depart_time,arrive_time,day, month, year)
+Flown(pilot_id, airline_code, number)
+*/
+
+SELECT COUNT(*)
+FROM Flight ft, Flown f
+WHERE f.airline_code = ft.airline_code AND ft.year < 2000 AND ft.number = f.number;
+
 
 
 
