@@ -137,9 +137,16 @@ Flight(airline_code, number,from_city,to_city,depart_time,arrive_time,day, month
 Flown(pilot_id, airline_code, number)
 */
 
+-- finds total number of pilots who flown at least one airplane prior to year 2000
 SELECT COUNT(*)
 FROM Flight ft, Flown f
 WHERE f.airline_code = ft.airline_code AND ft.year < 2000 AND ft.number = f.number;
+
+--
+SELECT al.name, ft.number, ft.depart_time
+FROM Airline al, Flight ft
+WHERE al.code = ft.airline_code AND ft.from_city = 'SEA' AND ft.to_city = 'HNL' AND 
+ft.depart_time >= 1000 AND ft.month = 3 AND ft.day = 18 AND ft.year = 2014;
 
 
 
