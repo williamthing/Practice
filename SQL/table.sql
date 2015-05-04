@@ -114,8 +114,6 @@ INSERT INTO Teaches VALUES ('zahorjan', 'MENG', 100);
 INSERT INTO Teaches VALUES ('levy', 'ENG', 101);
 INSERT INTO Teaches VALUES ('levy', 'MENG', 100);
 
-
-
 SELECT t1.dept, t1.number
 FROM Teaches t1, Teaches t2, Instructor i1, Instructor i2
 WHERE t1.username=i1.username 
@@ -129,7 +127,7 @@ SELECT t.dept, t.number
 FROM Teaches t
 WHERE t.username NOT IN ('zahorjan', 'levy');
 
--- abstract table
+-- abstract table AIRPORT DB
 /*
 Airline(code,name)
 Pilot(id,name,flight_hours,airline_code)
@@ -156,5 +154,35 @@ WHERE a.code = p.airline_code
 AND p.flight_hours >= 2000
 GROUP BY a.name
 HAVING COUNT(*) >= 10;
+
+-- ABSTRACT TABLE 'Twitter' DB
+/*
+User(uid,name)
+Tweet(tid,content)
+Post(uid,tid,time)
+Follow(uid,followsuid)
+*/
+
+-- Finds name of twitter users who have posted more than 5 tweets that are
+-- over 100 characters long
+SELECT u.name AS 'Users'
+FROM User u, Tweet t, Post p
+WHERE u.uid = p.uid AND p.tid = t.tid AND length(t.content) >= 100
+GROUP u.uid, u.name
+HAVING COUNT(*) > 5
+
+-- Query for super users, and finds users who are being followed
+-- by active users, active users are people who follow more than 50 users.
+SELECT u2.name AS 'names'
+FROM User u2, Follow f2,
+	(SELECT u.uid
+	FROM User u, Follow f
+	WHERE u.uid = f.uid
+	GROUP BY u.uid
+	HAVING COUNT(*) > 50) x
+WHERE x.uid = f2.uid AND f2.followsuid = u2.uid
+GROUP BY u2.name 
+
+
 
 
