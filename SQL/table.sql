@@ -76,4 +76,59 @@ WHERE p.country=g.country
 ORDER BY g.gdp/p.population DESC
 LIMIT 10;
 
+-- NEW TABLE
+	 CREATE	TABLE	Class	(	
+	 	 			dept	VARCHAR(6),	
+	 	 			number	INTEGER,	
+	 	 			title	VARCHAR(75),	
+	 	 			PRIMARY	KEY	(dept,	number)	
+);
+	 CREATE	TABLE	Instructor	(	
+	 	 			username	VARCHAR(8),	
+	 	 			fname	VARCHAR(50),	
+	 	 			lname	VARCHAR(50),	
+	 	 			started_on	CHAR(10),	
+	 	 			PRIMARY	KEY	(username)	
+);
+	 CREATE	TABLE	Teaches	(	
+	 	 			username	VARCHAR(8),	
+	 	 			dept	VARCHAR(6),	
+	 	 			number	INTEGER,	
+	 	 			PRIMARY	KEY	(username,	dept,	number),	
+	 	 			FOREIGN	KEY	(username)	REFERENCES	Instructor(username),	
+	 	 			FOREIGN	KEY	(dept,	number)	REFERENCES	Class(dept,	number)	
+);
+
+INSERT INTO Class VALUES ('ENG', 101, 'Into to English');
+INSERT INTO Class VALUES ('MATH', 300, 'Into to Math');
+INSERT INTO Class VALUES ('ECON', 200, 'Into to MC');
+INSERT INTO Class VALUES ('MENG', 100, 'M & E');
+
+INSERT INTO Instructor VALUES ('zahorjan', 'M', 'Zahorjan', '03/04/2010');
+INSERT INTO Instructor VALUES ('levy', 'F', 'Levy', '02/04/2010');
+INSERT INTO Instructor VALUES ('Jane', 'Jane', 'Lee', '01/04/2010');
+
+INSERT INTO Teaches VALUES ('Jane', 'ECON', 200);
+INSERT INTO Teaches VALUES ('zahorjan', 'MATH', 300);
+INSERT INTO Teaches VALUES ('zahorjan', 'MENG', 100);
+INSERT INTO Teaches VALUES ('levy', 'ENG', 101);
+INSERT INTO Teaches VALUES ('levy', 'MENG', 100);
+
+
+
+SELECT t1.dept, t1.number
+FROM Teaches t1, Teaches t2, Instructor i1, Instructor i2
+WHERE t1.username=i1.username 
+AND t2.username=i2.username
+AND i1.username='zahorjan' 
+AND i2.username='levy' 
+AND t1.dept=t2.dept 
+AND t1.number=t2.number;
+
+SELECT t.dept, t.number
+FROM Teaches t
+WHERE t.username NOT IN ('zahorjan', 'levy');
+
+
+
 
