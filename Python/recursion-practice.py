@@ -36,6 +36,15 @@ def factorial(n):
     else:
         return n * factorial(n-1)
 
+def write_squares(n):
+    if n == 1:
+        print "square of 1 is 1!!!"
+    elif n % 2 == 0:
+        write_squares(n-1)
+        print("even square {}".format(n*n))
+    else:
+        print("odd square {}".format(n*n))
+        write_squares(n-1)
 
 if __name__ == "__main__":
     # Testing reverse_string method
@@ -55,4 +64,6 @@ if __name__ == "__main__":
     print factorial(5)
     print factorial(10)
 
-    
+    write_squares(5)
+    write_squares(1)
+    write_squares(8)
