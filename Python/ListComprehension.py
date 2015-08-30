@@ -10,7 +10,7 @@ list1 = [math.pow(2,x) for x in range(5)]
 print list1
 
 # using built in pow() function returns an integer
-list2 = [pow(2, x) for x in range(5)] 
+list2 = [pow(2, x) for x in range(5)]
 print list2
 
 # creates a list of only positive integers squared from 0 to 5 (exclusive)
@@ -37,7 +37,7 @@ print result
 
 ### some map stuff vs list stuff
 def mapstuff(x):
-	return x+1
+    return x+1
 
 # same result for map and list comp
 print map(mapstuff, range(5))
