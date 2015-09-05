@@ -64,6 +64,7 @@ if __name__ == "__main__":
     print factorial(5)
     print factorial(10)
 
+    # testing write squares
     write_squares(5)
     write_squares(1)
     write_squares(8)
