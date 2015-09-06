@@ -1,6 +1,11 @@
 #!/bin/python
 
 def print_coin_flips(n):
+    """
+    prints all combinations of n flips from a two
+    sided coin
+    assume input n is a non-negative integer
+    """
     def coin_flips(n, result):
         if n == 0:
             print result
