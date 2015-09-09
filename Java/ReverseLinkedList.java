@@ -1,17 +1,19 @@
 // William Thing
 // Reversing LinkedList
 
+
 public class ReverseLinkedList {
 
    public static class LinkedListNode {
       private int value;
       private LinkedListNode next;
       
-      // constructor
+      // creates a LinkedListNode with given n value
       public LinkedListNode(int n) {
          this(n, null);
       }
       
+      // creates a LinkedListNode with given n value and next LinkedListNode
       public LinkedListNode(int n, LinkedListNode node) {
          this.value = n;
          this.next = node;
@@ -21,10 +23,10 @@ public class ReverseLinkedList {
    public static void main(String args[]) {
    
       // create head of linkedlist
-      LinkedListNode front = new LinkedListNode(1);
+      LinkedListNode front = new LinkedListNode(0);
       LinkedListNode curr = front;
       // create a linkedlist linking integers 1 through 10
-      for (int i = front.value+1; i <= 3; i++) {
+      for (int i = front.value+1; i <= 2; i++) {
          curr.next = new LinkedListNode(i);
          curr = curr.next;
       }
@@ -43,6 +45,9 @@ public class ReverseLinkedList {
 
    }
    
+   // reverseList takes a given linkedlist and reverses the order of the original
+   // linkedlist so that front is back and back is front and traversing in backwards order.
+   // TODO: ONLY CAN REVERSE MAX OF 3 LINKEDLISTNODES NEED TO FIX
    public static LinkedListNode reverseList(LinkedListNode front) {
       // check if front next is null only 1 node; no need to reverse
       if (front.next != null) {
