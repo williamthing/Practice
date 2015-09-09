@@ -26,7 +26,7 @@ Input: 11 cents, get first 2
 
 import java.util.*;
 
-public class coinBackTrackingPractice {
+public class CoinBackTrackingPractice {
 
    public static int[] coinTypes = {1, 5, 10, 25, 100};
 
