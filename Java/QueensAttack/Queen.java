@@ -1,3 +1,6 @@
+// William Thing
+// 9/10/15
+
 public class Queen {
    private int size;
    private int row;

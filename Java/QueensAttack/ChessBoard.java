@@ -1,3 +1,9 @@
+// William Thing
+// 9/10/15
+// ChessBoard
+//
+//
+
 import java.util.Arrays;
 
 public class ChessBoard {
@@ -17,10 +23,16 @@ public class ChessBoard {
       }
    }
    
+   // returns true if any queen can attack one another, else false
+   // no queens can attack each other
+   // TODO: Implementation of this canQueensAttack method
    public boolean canQueensAttack() {
       return true;
    }
    
+   // takes int of col and row to place a Queen and places it.
+   // if a queen (represented by a 1) is already at the location
+   // will place it next to that queen (row wise).
    public void placeQueen(int col, int row) {
       if (this.board[col][row] == 0) {
          this.board[col][row] = 1;
@@ -29,10 +41,9 @@ public class ChessBoard {
       }
    }
    
-   public void printCanQueensAttack(boolean ans) {
-      
-   }
-   
+   // Prints the chessboard where 0 represents an open spot and 1 represents
+   // a Queen. N Queens on the board and prints a message if any Queens can
+   // attack each other or not.
    public void print() {
       for (int i = 0; i < size; i++) {
          System.out.print("\t");
@@ -45,7 +56,5 @@ public class ChessBoard {
       } else {
          System.out.println("    No, Queens cannot attack one another!");
       }
-      
    }
-
 }
