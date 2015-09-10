@@ -1,6 +1,5 @@
 // William Thing
-// Reversing LinkedList
-
+// Reversing LinkedList Problem
 
 public class ReverseLinkedList {
 
@@ -21,12 +20,11 @@ public class ReverseLinkedList {
    }
 
    public static void main(String args[]) {
-   
       // create head of linkedlist
       LinkedListNode front = new LinkedListNode(0);
       LinkedListNode curr = front;
       // create a linkedlist linking integers 1 through 10
-      for (int i = front.value+1; i <= 2; i++) {
+      for (int i = front.value+1; i <= 10; i++) {
          curr.next = new LinkedListNode(i);
          curr = curr.next;
       }
@@ -35,50 +33,56 @@ public class ReverseLinkedList {
       printList(front);
       System.out.println("<----- REVERSING LINKEDLIST ----->");
       front = reverseList(front);
-      printList(front);
-      
+      newPrintList(front);
       
       /*
       System.out.println("-----> DEBUGGING <-----");
       System.out.println(front.value);
       */
-
    }
    
    // reverseList takes a given linkedlist and reverses the order of the original
    // linkedlist so that front is back and back is front and traversing in backwards order.
-   // TODO: ONLY CAN REVERSE MAX OF 3 LINKEDLISTNODES NEED TO FIX
    public static LinkedListNode reverseList(LinkedListNode front) {
-      // check if front next is null only 1 node; no need to reverse
-      if (front.next != null) {
-         // only 2 linked nodes to reverse
-         LinkedListNode curr = front;
-         if (front.next.next == null) {
-            front = front.next;
-            front.next = curr;
-            curr.next = null;
-         // more than 2 linked nodes to reverse
-         } else {
-            while (curr.next.next != null) {
-               front = front.next;
-               curr.next = front.next;
-               front.next = curr;
-            }
-            // for last reversal
-            LinkedListNode temp = front;
-            front = curr.next;
-            curr.next = front.next;
-            front.next = temp;
-         }
+      LinkedListNode curr = front;
+      LinkedListNode temp;
+      while (curr != null && curr.next != null) {
+         temp = front;
+         front = curr.next;
+         curr.next = front.next;
+         front.next = temp;
       }
       return front;
-   
-   
    }
    
    // takes given linkedlist and prints each individual node from
    // front to last
    public static void printList(LinkedListNode front) {
+      printListHelper(front);
+   }
+   
+   // takes given linkedlist and prints each individual node from
+   // front to last
+   private static void printListHelper(LinkedListNode node) {
+      if (node != null) {
+         System.out.println(node.value);
+         printListHelper(node.next);
+      }
+   }
+   
+   // takes given linkedlist and prints each individual node from
+   // front to last (more elegant than previous method)
+   public static void newPrintList(LinkedListNode node) {
+      while (node != null && node.next != null) {
+         System.out.println(node.value);
+         node = node.next;
+      }
+      System.out.println(node.value);
+   }
+   
+   // takes given linkedlist and prints each individual node from
+   // front to last
+   public static void oldPrintList(LinkedListNode front) {
       if (front != null) {
          if (front.next == null) {
             System.out.println(front.value);
