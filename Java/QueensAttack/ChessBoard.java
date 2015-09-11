@@ -26,8 +26,8 @@ public class ChessBoard {
    // returns true if any queen can attack one another, else false
    // no queens can attack each other
    // TODO: Implementation of this canQueensAttack method
-   public boolean canQueensAttack() {
-      return true;
+   public void canQueensAttack(Queen[] queenArray) {
+      this.print(true);
    }
    
    // takes int of col and row to place a Queen and places it.
@@ -44,13 +44,12 @@ public class ChessBoard {
    // Prints the chessboard where 0 represents an open spot and 1 represents
    // a Queen. N Queens on the board and prints a message if any Queens can
    // attack each other or not.
-   public void print() {
+   public void print(boolean ans) {
       for (int i = 0; i < size; i++) {
          System.out.print("\t");
          System.out.println(Arrays.toString(board[i]));
       }
       System.out.println();
-      boolean ans = this.canQueensAttack();
       if (ans) {
          System.out.println("    Yes, Queens can attack each other!");
       } else {

@@ -34,6 +34,10 @@ public class ReverseLinkedList {
       System.out.println("<----- REVERSING LINKEDLIST ----->");
       front = reverseList(front);
       newPrintList(front);
+      System.out.println("<----- RECURSIVE REVERSING LINKEDLIST ----->");
+      // reversing with recursive method
+      front = recurReverseList(front);
+      newPrintList(front);
       
       /*
       System.out.println("-----> DEBUGGING <-----");
@@ -51,6 +55,27 @@ public class ReverseLinkedList {
          front = curr.next;
          curr.next = front.next;
          front.next = temp;
+      }
+      return front;
+   }
+   
+   // recurReverseList takes a given linkedlist and reverses the order of the original
+   // linkedlist recursively. 
+   // Front is back and back is front and traversing in backwards order.
+   public static LinkedListNode recurReverseList(LinkedListNode front) {
+      return recurReverseList(front, front);
+   }
+   
+   // recurReverseList helper takes a given linkedlist and reverses the order of the original
+   // linkedlist recursively. 
+   // Front is back and back is front and traversing in backwards order.
+   public static LinkedListNode recurReverseList(LinkedListNode front, LinkedListNode curr) {
+      if (curr.next != null) {
+         LinkedListNode temp = front;
+         front = curr.next;
+         curr.next = front.next;
+         front.next = temp;
+         return recurReverseList(front, curr);
       }
       return front;
    }
@@ -97,5 +122,4 @@ public class ReverseLinkedList {
          }
       }
    }
-
 }
