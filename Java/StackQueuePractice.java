@@ -22,7 +22,8 @@ public class StackQueuePractice {
       while (!s.isEmpty()) {
          q.add(s.pop());
        }
-       for (int i = 1; i <= q.size(); i++) {
+       int size = q.size();
+       for (int i = 1; i <= size; i++) {
            int current = q.remove();
            if (current < 0) {
                s.push(current);
@@ -30,7 +31,9 @@ public class StackQueuePractice {
                q.add(current);
          }
        }
-       for (int i = 1; i <= q.size(); i++) {
+       
+       size = q.size();
+       for (int i = 1; i <= size; i++) {
            s.push(q.remove());
        }
    }
